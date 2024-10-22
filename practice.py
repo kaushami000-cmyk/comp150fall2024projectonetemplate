@@ -103,7 +103,7 @@ class Game:
     
     def check_game_win(self):
         total_talent = 0
-        for self.party:
+        for self.party
             total_talent += int(character["talent"])
         return total_talent == 50
             
