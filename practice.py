@@ -7,7 +7,7 @@ class EventStatus(Enum):
     PARTIAL_PASS = "partial_pass"
 
 class Statistic:
-    def __init__(self, name: str, value: int = 0, description: str = "", min_value: int = 0, max_value: int = 50):
+    def __init__(self, name: str, value: int = 0, description: str = "", min_value: int = 0, max_value: int = 25):
         self.name = name
         self.value = value
         self.description = description
@@ -23,7 +23,6 @@ class Statistic:
 class Character:
     def __init__(self, name: str = "Raven"):
         self.name = name
-        self.hit_points = hit_points
         self.charisma = Statistic("Charisma", description="Charisma is a meaure of a physical power.")
         self.uniqueness = Statistic("Uniqueness", description="Charisma is a meaure of skill in performing tasks.")
         self.nerve = Statistic("Nerve", description="Nerve is a meaure of measure of liveliness (HP).")
@@ -102,10 +101,10 @@ class Game:
         return len(self.party) == 0
     
     def check_game_win(self):
-        total_talent = 0
+        summon_power = 0
         for player in self.party:
-            total_talent += int(player["talent"])
-        return total_talent == 50
+            summon_power += int(player["charisma"]) + int(player["uniqueness"]) + int(player["nerve"]) + int(player["talent"])
+        return summon_power == 100
 
 class UserInputParser:
     def parse(self, prompt: str) -> str:
