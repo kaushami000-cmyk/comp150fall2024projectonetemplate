@@ -103,10 +103,51 @@ class Game:
     
     def check_game_win(self):
         total_talent = 0
-        for self.party
-            total_talent += int(character["talent"])
+        for player in self.party:
+            total_talent += int(player["talent"])
         return total_talent == 50
-            
+
+class UserInputParser:
+    def parse(self, prompt: str) -> str:
+        return input(prompt)
+
+    def select_party_member(self, party: List[Character]) -> Character:
+        print("Choose a party member:")
+        for idx, member in enumerate(party):
+            print(f"{idx + 1}. {member.name}")
+        choice = int(self.parse("Enter the number of the chosen party member: ")) - 1
+        return party[choice]
+
+    def select_stat(self, character: Character) -> Statistic:
+        print(f"Choose a stat for {character.name}:")
+        stats = character.get_stats()
+        for idx, stat in enumerate(stats):
+            print(f"{idx + 1}. {stat.name} ({stat.value})")
+        choice = int(self.parse("Enter the number of the stat to use: ")) - 1
+        return stats[choice]
+
+
+def load_events_from_json(file_path: str) -> List[Event]:
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+    return [Event(event_data) for event_data in data]
+
+
+def start_game():
+    parser = UserInputParser()
+    characters = [Character(f"Character_{i}") for i in range(3)]
+
+    # Load events from the JSON file
+    events = load_events_from_json('project_code/location_events/location_1.json')
+
+    locations = [Location(events)]
+    game = Game(parser, characters, locations)
+    game.start()
+
+
+if __name__ == '__main__':
+    start_game()
+                
 """
 def dance(self, target):
     attack_roll = random.randint(1, 20) + self.charisma
