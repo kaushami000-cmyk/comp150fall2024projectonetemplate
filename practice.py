@@ -27,10 +27,10 @@ class Statistic:
 class Character:
     def __init__(self, name):
         self.name = name
-        self.charisma = Statistic("Charisma", random.randint(0,10), description="Charisma is a meaure of a physical power.")
-        self.uniqueness = Statistic("Uniqueness", random.randint(0,10), description="Charisma is a meaure of skill in performing tasks.")
+        self.charisma = Statistic("Charisma", random.randint(0,10), description="Charisma is a measure of a physical power.")
+        self.uniqueness = Statistic("Uniqueness", random.randint(0,10), description="Charisma is a measure of skill in performing tasks.")
         self.nerve = Statistic("Nerve", random.randint(0,10), description="Nerve is a meaure of measure of liveliness (HP).")
-        self.talent = Statistic("Talent", random.randint(0,10), description="Talent is a meaure of ability to recruit queens.")
+        self.talent = Statistic("Talent", random.randint(0,10), description="Talent is a measure of ability to recruit queens.")
         print("Your charisma is:", self.charisma)
     def __str__(self):
         return f"Character: {self.name}, Charisma: {self.charisma}, Uniqueness: {self.uniqueness}, Nerve: {self.nerve}, Talent: {self.talent}"
