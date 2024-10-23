@@ -126,7 +126,6 @@ def load_events_from_json(file_path: str) -> List[Event]:
 def start_game():
     parser = UserInputParser()
     characters = [Character(f"Character_{i}") for i in range(3)]
-
     # Load events from the JSON file
     events = load_events_from_json('project_code/location_events/location_1.json')
 

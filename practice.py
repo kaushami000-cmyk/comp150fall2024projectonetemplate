@@ -1,4 +1,8 @@
+import json
+import sys
 import random
+from typing import List, Optional
+from enum import Enum
 
 class EventStatus(Enum):
     UNKNOWN = "unknown"
@@ -21,13 +25,13 @@ class Statistic:
         self.value = max(self.min_value, min(self.max_value, self.value + amount))
 
 class Character:
-    def __init__(self, name: str = "Raven"):
+    def __init__(self, name):
         self.name = name
-        self.charisma = Statistic("Charisma", description="Charisma is a meaure of a physical power.")
-        self.uniqueness = Statistic("Uniqueness", description="Charisma is a meaure of skill in performing tasks.")
-        self.nerve = Statistic("Nerve", description="Nerve is a meaure of measure of liveliness (HP).")
-        self.talent = Statistic("Talent", description="Talent is a meaure of ability to recruit queens.")
-
+        self.charisma = Statistic("Charisma", random.randint(0,10), description="Charisma is a meaure of a physical power.")
+        self.uniqueness = Statistic("Uniqueness", random.randint(0,10), description="Charisma is a meaure of skill in performing tasks.")
+        self.nerve = Statistic("Nerve", random.randint(0,10), description="Nerve is a meaure of measure of liveliness (HP).")
+        self.talent = Statistic("Talent", random.randint(0,10), description="Talent is a meaure of ability to recruit queens.")
+        print("Your charisma is:", self.charisma)
     def __str__(self):
         return f"Character: {self.name}, Charisma: {self.charisma}, Uniqueness: {self.uniqueness}, Nerve: {self.nerve}, Talent: {self.talent}"
 
@@ -57,7 +61,7 @@ class Pageant(Character):
 class Event:
     def choose_class():
         while True:
-            choice = input("Choose what type of queen(Fish, Club, Comedy, Pageant): ")
+            choice = input("What type of queen do you want to be? Choose between Fish, Club, Comedy, or Pageant. ")
             if choice == "Fish":
                 return Fish()
             elif choice == "Club":
@@ -69,8 +73,7 @@ class Event:
             else:
                 print("Invalid choice. Please try again.")
 
-    character = choose_class()
-    print(self.charisma, self.uniqueness, self.nerve, self.talent)
+
 
 class Location:
     def __init__(self, events: List[Event]):
@@ -134,7 +137,10 @@ def load_events_from_json(file_path: str) -> List[Event]:
 
 def start_game():
     parser = UserInputParser()
-    characters = [Character(f"Character_{i}") for i in range(3)]
+    characters = [Character(input("Enter name: "))]
+
+    character = choose_class()
+    print(self.charisma, self.uniqueness, self.nerve, self.talent)
 
     # Load events from the JSON file
     events = load_events_from_json('project_code/location_events/location_1.json')
