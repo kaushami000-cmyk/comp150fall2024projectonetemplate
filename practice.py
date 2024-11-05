@@ -32,6 +32,9 @@ class Character:
         self.nerve = Statistic("Nerve", random.randint(0,10), description="Nerve is a meaure of measure of liveliness (HP).")
         self.talent = Statistic("Talent", random.randint(0,10), description="Talent is a measure of ability to recruit queens.")
         print("Your charisma is:", self.charisma)
+        print("Your uniqueness is:", self.uniqueness)
+        print("Your nerve is:", self.nerve)
+        print("Your talent is:", self.talent)
     def __str__(self):
         return f"Character: {self.name}, Charisma: {self.charisma}, Uniqueness: {self.uniqueness}, Nerve: {self.nerve}, Talent: {self.talent}"
 
@@ -137,11 +140,21 @@ def load_events_from_json(file_path: str) -> List[Event]:
 
 def start_game():
     parser = UserInputParser()
-    characters = [Character(input("Enter name: "))]
+    characters = [Character(input("What's your name? Type it here:"))]
 
-    character = choose_class()
-    print(self.charisma, self.uniqueness, self.nerve, self.talent)
-
+    characters = [Event(input("What type of Drag Queen do you want to be? Choose between the following: Fish, Club, Comedy, or Pageant:"))]
+    while True:
+                choice = input("What type of queen do you want to be? Choose between Fish, Club, Comedy, or Pageant. ")
+                if choice == "Fish":
+                    return Fish()
+                elif choice == "Club":
+                    return Club()
+                elif choice == "Comedy":
+                    return Comedy()
+                elif choice == "Pageant":
+                    return Pageant()
+                else:
+                    print("Invalid choice. Please try again.")
     # Load events from the JSON file
     events = load_events_from_json('project_code/location_events/location_1.json')
 
