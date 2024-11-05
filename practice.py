@@ -146,12 +146,19 @@ def start_game():
     while True:
                 choice = input("What type of queen do you want to be? Choose between Fish, Club, Comedy, or Pageant. ")
                 if choice == "Fish":
-                    return Fish()
+                    self.talent += 3
+                    print("Your talent is:", self.talent)
                 elif choice == "Club":
+                    self.charisma += 3
+                    print("Your charisma is:", self.charisma)
                     return Club()
                 elif choice == "Comedy":
+                    self.uniqueness += 3
+                    print("Your uniqueness is:", self.uniqueness)
                     return Comedy()
                 elif choice == "Pageant":
+                    self.nerve += 3
+                    print("Your nerve is:", self.nerve)
                     return Pageant()
                 else:
                     print("Invalid choice. Please try again.")
