@@ -41,7 +41,7 @@ class Character:
     def get_stats(self):
         return [self.charisma, self.uniqueness, self.nerve, self.talent]
 
-class Fish(Character):
+"""class Fish(Character):
     def __init__(self, name, class_, level, hit_points, charisma, uniqueness, nerve, talent):
         super().__init__(self, name, class_, level, hit_points, charisma, uniqueness, nerve, talent)
         self.talent += 3  
@@ -60,7 +60,7 @@ class Pageant(Character):
     def __init__(self, name, class_, level, hit_points, charisma, uniqueness, nerve, talent):
         super().__init__(self, name, class_, level, hit_points, charisma, uniqueness, nerve, talent)
         self.nerve += 3
-    
+"""    
 class Event:
     def choose_class():
         while True:
@@ -145,19 +145,20 @@ def start_game():
   while True:
     choice = input("What type of Drag Queen are you? Choose between Fish, Club, Comedy, or Pageant: ")
     if choice == "Fish":
-      character.talent.modify(3)
+      Character.self.talent.modify(3)
       break
     elif choice == "Club":
-      character.charisma.modify(3)
+      Character.self.charisma.modify(3)
       break
     elif choice == "Comedy":
-      character.uniqueness.modify(3)
+      Character.self.uniqueness.modify(3)
       break
     elif choice == "Pageant":
-      character.nerve.modify(3)
+      Character.self.nerve.modify(3)
       break
     else:
       print("Invalid choice. Please try again.")
+      choice = input("What type of Drag Queen are you? Choose between Fish, Club, Comedy, or Pageant: ")
 
  # Load events from the JSON file
     events = load_events_from_json('project_code/location_events/location_1.json')
